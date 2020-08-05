@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HomeFragment">
+        <LinearLayout
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btnSearch"
+                style="@style/icon_button_style"
+                android:drawableTop="@drawable/ic_search"
+                android:text="Search" />
+
+            <Button
+                android:id="@+id/btn_sign_up"
+                style="@style/icon_button_style"
+                android:drawableTop="@drawable/ic_sign_up"
+                android:text="Sign Up" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_order"
+                style="@style/icon_button_style"
+                android:drawableTop="@drawable/ic_order"
+                android:text="Order" />
+
+            <Button
+                android:id="@+id/btn_info"
+                style="@style/icon_button_style"
+                android:drawableTop="@drawable/ic_info"
+                android:text="Information" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</layout>

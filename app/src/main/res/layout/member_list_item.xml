@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:id="@+id/text_view_blood_type"
+            android:text="AB+"
+            android:textColor="@color/app_main_color"
+            android:textSize="40dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+
+        <ImageView
+            android:id="@+id/btn_phone"
+            android:src="@drawable/ic_call"
+            android:layout_alignParentEnd="true"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+
+        <TextView
+            android:id="@+id/item_name"
+            android:text="@string/edit_text_name_hint"
+            android:textColor="@color/border_color"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/text_view_blood_type" />
+        <TextView
+            android:id="@+id/item_date"
+            android:text="date"
+            android:textColor="@color/border_color"
+            android:textSize="15dp"
+            android:layout_below="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/text_view_blood_type"
+            />
+        <TextView
+            android:id="@+id/item_gender"
+            android:text="gender"
+            android:textColor="@color/border_color"
+            android:layout_below="@+id/item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/text_view_blood_type"
+            tools:ignore="UnknownId" />
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>
