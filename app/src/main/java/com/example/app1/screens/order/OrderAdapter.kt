@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.app1.OrderData
 import com.example.app1.R
 import kotlinx.android.synthetic.main.request_list_item.view.*
 
 class OrderAdapter(
-    private val recyclerList: List<OrderListItem>,
+    private val recyclerList: List<OrderData>,
     private val listener: RequestListFragment
 ) : RecyclerView.Adapter<OrderAdapter.RecyclerViewHolder>() {
 
@@ -26,12 +27,12 @@ class OrderAdapter(
     override fun getItemCount() = recyclerList.size
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        val currentItem=recyclerList[position]
-        holder.name?.text=currentItem.name
-        holder.bloodType?.text=currentItem.blood_type
-        holder.hospitalName?.text=currentItem.hospital_name
-        val phone=currentItem.ph_no
-        holder.phone?.setOnClickListener{
+        val currentItem = recyclerList[position]
+        holder.name?.text = currentItem.name
+        holder.bloodType?.text = currentItem.blood_type
+        holder.hospitalName?.text = currentItem.hospital_name
+        val phone = currentItem.ph_no
+        holder.phone?.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(phone)))
             it.context.startActivity(intent)
         }
@@ -47,17 +48,19 @@ class OrderAdapter(
         val hospitalName: TextView? = item_view.item_hospital_name
 
         init {
-            item_view.setOnClickListener (this)
+            item_view.setOnClickListener(this)
         }
+
         override fun onClick(p0: View?) {
-            val position=adapterPosition
-            if (position!=RecyclerView.NO_POSITION){
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
                 listener.onItemClick(position)
             }
         }
 
     }
-    interface OnItemClickListener{
+
+    interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
 

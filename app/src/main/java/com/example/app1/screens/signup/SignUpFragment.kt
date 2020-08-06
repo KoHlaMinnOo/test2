@@ -10,10 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.databinding.DataBindingUtil
+import com.example.app1.HomeFragment
 import com.example.app1.R
 import com.example.app1.databinding.FragmentSignUpBinding
 import com.example.app1.internet.API
-import com.example.app1.screens.login.LoginFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -115,6 +115,7 @@ class SignUpFragment : Fragment() {
 
         //Btn Sign Up
         binding.btnSignUp.setOnClickListener {
+
             val etName = binding.editTextName.text.toString()
             val etPhone = binding.editTextPhone.text.toString()
             val etWeight = binding.editTextWeight.text.toString()
@@ -160,48 +161,33 @@ class SignUpFragment : Fragment() {
                     val alertDialog = builder.create()
                     alertDialog.show()
                 }
-                else -> {
-                    signUp(etName, etPhone, gender!!, etWeight, etBirthDate, bloodType!!)
+                else ->{
+                    binding.progressBar.visibility=View.VISIBLE
+                    coroutineScope.launch {
+
+                        val postMemberDeferred = API.retrofitService.signUpMemberAsync(
+                            etName, etPhone, gender!!, etWeight, etBirthDate, bloodType!!, "First Time"
+                        )
+                        try {
+                            val result = postMemberDeferred.await()
+                            binding.progressBar.visibility=View.GONE
+                            Toast.makeText(context, "${result.message}", Toast.LENGTH_LONG).show()
+                            activity?.supportFragmentManager?.beginTransaction()
+                                ?.replace(R.id.fragment_container,HomeFragment())?.commit()
+
+                        } catch (e: Exception) {
+                            Toast.makeText(context, "${e.message}", Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
             }
 
         }
 
-        //Login Text
-        binding.loginText.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.fragment_container, LoginFragment())
-                ?.commit()
-
-        }
         return binding.root
 
     }
 
-    private fun signUp(
-        name: String,
-        phone: String,
-        gender: String,
-        weight: String,
-        birthDate: String,
-        bloodType: String
-    ) {
-        coroutineScope.launch {
-
-            val postMemberDeferred = API.retrofitService.postMemberAsync(
-                name, phone, gender, weight, birthDate, bloodType, "1000"
-            )
-            try {
-                val result = postMemberDeferred.await()
-                Toast.makeText(context, "${result.source()}", Toast.LENGTH_LONG).show()
-
-            } catch (e: Exception) {
-                Toast.makeText(context, "${e.message}", Toast.LENGTH_LONG).show()
-            }
-        }
-
-
-    }
 
 }
 

@@ -5,13 +5,18 @@
     <data>
 
     </data>
-
-    <LinearLayout
-        android:layout_margin="10dp"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screens.order.RequestBloodFragment"
-        android:orientation="vertical">
+        tools:context=".screens.order.RequestBloodFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +31,8 @@
                 android:id="@+id/edit_text_name"
                 style="@style/edit_text_style"
                 android:hint="@string/edit_text_name_hint"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                tools:ignore="Autofill" />
 
         </LinearLayout>
 
@@ -45,8 +51,10 @@
                 android:id="@+id/edit_text_phone"
                 style="@style/edit_text_style"
                 android:hint="@string/edit_text_phone_hint"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:autofillHints="null" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +70,8 @@
                 android:id="@+id/edit_text_hospital_name"
                 style="@style/edit_text_style"
                 android:hint="@string/edit_text_hospital_name"
-                android:inputType="text" />
+                android:inputType="text"
+                android:autofillHints="null" />
         </LinearLayout>
 
 
@@ -162,15 +171,23 @@
         </LinearLayout>
 
         <Button
-            android:layout_gravity="center"
             android:id="@+id/btn_request_blood"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_background"
             android:text="@string/btn_order_blood"
             android:textColor="@color/app_text_color" />
 
 
+
     </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
 </layout>

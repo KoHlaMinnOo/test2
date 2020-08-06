@@ -1,12 +1,10 @@
 package com.example.app1
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import com.example.app1.databinding.FragmentHomeBinding
 import com.example.app1.screens.info.InfoFragment
 import com.example.app1.screens.order.OrderFragment

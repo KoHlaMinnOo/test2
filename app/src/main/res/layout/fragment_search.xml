@@ -6,60 +6,72 @@
 
     </data>
 
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <TextView
-                style="@style/text_view_style"
-                android:text="@string/tv_phone" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/edit_text_phone"
-                android:hint="@string/edit_text_phone_hint"
-                style="@style/edit_text_style"
-                android:inputType="phone"
-                >
-            </EditText>
+                <TextView
+                    style="@style/text_view_style"
+                    android:text="@string/tv_phone" />
+
+                <EditText
+                    android:id="@+id/edit_text_phone"
+                    style="@style/edit_text_style"
+                    android:autofillHints="null"
+                    android:hint="@string/edit_text_phone_hint"
+                    android:inputType="phone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_view_style"
+                    android:text="@string/tv_password" />
+
+                <EditText
+
+                    android:id="@+id/edit_text_password"
+                    style="@style/edit_text_style"
+                    android:autofillHints="null"
+                    android:hint="@string/edit_text_password_hint"
+                    android:inputType="text"
+                    tools:ignore="TextFields" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_background"
+                android:text="@string/btn_login"
+                android:textColor="@color/app_text_color" />
+
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/text_view_style"
-                android:text="@string/tv_password" />
-
-            <EditText
-
-                android:id="@+id/edit_text_password"
-                style="@style/edit_text_style"
-                android:hint="@string/edit_text_password_hint"
-                android:inputType="text"
-
-                />
-
-        </LinearLayout>
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/btn_background"
-            android:text="@string/btn_login"
-            android:textColor="@color/app_text_color"/>
-
-
-    </LinearLayout>
+            android:layout_centerInParent="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
 </layout>

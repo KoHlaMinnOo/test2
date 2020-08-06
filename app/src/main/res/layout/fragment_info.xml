@@ -5,17 +5,29 @@
     <data>
 
     </data>
-
-    <FrameLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".screens.info.InfoFragment">
 
         <TextView
-            android:id="@+id/info"
+            android:text="@string/tv_requirement"
+            android:textSize="20sp"
+            android:textColor="@color/app_main_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="@android:color/black"
+            android:text="@string/donation_info"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Info" />
+            android:layout_height="wrap_content"/>
 
-    </FrameLayout>
+
+    </LinearLayout>
+    </ScrollView>
 </layout>

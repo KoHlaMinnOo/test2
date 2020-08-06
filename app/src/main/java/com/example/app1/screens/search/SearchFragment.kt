@@ -10,7 +10,6 @@ import android.widget.Toast
 import com.example.app1.R
 import com.example.app1.databinding.FragmentSearchBinding
 import com.example.app1.internet.API
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -27,6 +26,7 @@ class SearchFragment : Fragment() {
     ): View? {
         val binding = FragmentSearchBinding.inflate(inflater)
         binding.btnLogin.setOnClickListener {
+
             val phNo = binding.editTextPhone.text.toString()
             val password = binding.editTextPassword.text.toString()
             when {
@@ -41,24 +41,29 @@ class SearchFragment : Fragment() {
                     binding.editTextPassword.requestFocus()
                     return@setOnClickListener
                 }
+                else->{
+                    binding.progressBar.visibility=View.VISIBLE
+                    coroutineScope.launch {
+                        val adminLoginInfo = API.retrofitService.adminLoginAsync(phNo, password)
+                        try {
+                            val result = adminLoginInfo.await()
+                            binding.progressBar.visibility=View.GONE
+                            if (!(result.error || result.message != "success")) {
+                                activity?.supportFragmentManager?.beginTransaction()
+                                    ?.replace(R.id.fragment_container, SearchListFragment())
+                                    ?.commit()
+                            } else {
+                                Toast.makeText(context, "${result.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        } catch (e: Exception) {
+                            Toast.makeText(context, "${e.message}", Toast.LENGTH_LONG).show()
+                        }
 
-            }
-            coroutineScope.launch {
-                val adminLoginInfo = API.retrofitService.adminLoginAsync(phNo, password)
-                try {
-                    val result = adminLoginInfo.await()
-                    if (!(result.error || result.message != "success")) {
-                        activity?.supportFragmentManager?.beginTransaction()
-                            ?.replace(R.id.fragment_container, SearchListFragment())
-                            ?.commit()
-                    }else{
-                        Toast.makeText(context, "${result.message}", Toast.LENGTH_SHORT).show()
                     }
-                } catch (e: Exception) {
-                    Toast.makeText(context, "${e.message}", Toast.LENGTH_LONG).show()
                 }
 
             }
+
         }
         return binding.root
     }

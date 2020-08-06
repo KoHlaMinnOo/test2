@@ -37,6 +37,27 @@
     <string name="tv_ab_minus">AB-</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_info">Info</string>
+    <string name="to_sign_up">Already Sign Up! Login Here</string>
+    <string name="date">date</string>
+    <string name="gender">gender</string>
+    <string name="hospital_name">Hospital Name</string>
+    <string name="image_view">Image View</string>
+    <string name="tv_requirement">Requirement for BloodDonation</string>
 
+    <string name="donation_info">
+        <ol>
+        <li>You are aged between 18 and 65</li>\n
+        <li>You weigh at least 110lb</li>\n
+        <li>You must be in good health at the time you donate</li>\n
+        <li>If you have recently had a tattoo or body piercing you cannot
+            donate for 6 months from the date of the procedure.  If the
+            body piercing was performed by a registered health professional
+            and any inflammation has settled completely, you can donate
+            blood after 12 hours.</li>\n
+        <li>Travel to areas where mosquito-borne infections are endemic,
+            e.g. malaria, dengue and Zika virus infections, may result in a temporary deferral .</li>\n
+        </ol>
+    </string>
 
 </resources>

@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.app1.MemberData
 import com.example.app1.R
 import kotlinx.android.synthetic.main.member_list_item.view.*
 
 class MemberAdapter(
-    private val recyclerList:List<MemberListItem>,
+    private val recyclerList:List<MemberData>,
     private val listener: MemberFragment
 ):RecyclerView.Adapter<MemberAdapter.RecyclerViewHolder> (){
 
@@ -32,7 +33,7 @@ class MemberAdapter(
         holder.date?.text = currentItem.birth_date
         holder.gender?.text = currentItem.gender
         val phone=currentItem.ph_no
-        holder.phone?.setOnClickListener{
+        holder.phone?.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(phone)))
             it.context.startActivity(intent)
         }

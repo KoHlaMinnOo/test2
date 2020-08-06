@@ -18,9 +18,10 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener(
             mOnNavigationItemSelectedListener
         )
-        if (savedInstanceState==null){
-            supportFragmentManager.beginTransaction().add(R.id.fragment_container,HomeFragment()).commit()
-            binding.bottomNavigation.selectedItemId=R.id.home
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().add(R.id.fragment_container, HomeFragment())
+                .commit()
+            binding.bottomNavigation.selectedItemId = R.id.home
         }
     }
 
